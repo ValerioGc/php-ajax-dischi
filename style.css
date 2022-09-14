@@ -1,0 +1,56 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+
+header {
+    background-color: #2E3A46;
+    box-shadow: 0 0 4px #000;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+.logo {
+    width: 40px;
+    margin: 1.2rem;
+}
+
+main {
+    background-color: #1E2D3B;
+    min-height: 100vh;
+}
+/********** Cards **********/
+.card-container {
+    padding-top: 8rem;
+    max-width: 70%;
+    margin:auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.card {
+    width: calc(100% / 5 - 2rem);
+    padding: 1rem;
+    background-color: #2E3A46;
+}
+
+.card img {
+    width: 100%;
+    object-fit: cover;
+}
+.card .album-title {
+    color: #ffffff;
+    text-transform: uppercase;
+}
+.card .album-info {
+    color: #5E5B5E;
+    text-transform: capitalize;
+}
