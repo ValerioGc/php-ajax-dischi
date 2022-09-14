@@ -40,6 +40,7 @@ main {
     width: calc(100% / 5 - 2rem);
     padding: 1rem;
     background-color: #2E3A46;
+    margin: 1.5rem 0;
 }
 
 .card img {
@@ -49,8 +50,11 @@ main {
 .card .album-title {
     color: #ffffff;
     text-transform: uppercase;
+    font-size: 1.4rem;
 }
 .card .album-info {
     color: #5E5B5E;
     text-transform: capitalize;
+    font-size: 1rem;
+
 }
