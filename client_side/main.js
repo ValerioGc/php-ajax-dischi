@@ -6,21 +6,23 @@ var app = new Vue({
         albumData: [],
     // Stato Caricamento
         isLoading: false,
-    // Genere Selezionato
+    // Genere e anno Selezionato
+        selYear: 'Filtra per anno',
         selGenre: 'Filtra per genere',
     // Array Filtro genere
         foundAlbumGenres: [],
+        foundAlbumYears: [],
     },
     created() { this.getResp(); },
 
     methods: {
         // Seleziona Chiamata
-        callApi(genre){
-            if (this.selGenre == "Filtra per genere"){
+        callApi(genre, year){
+            if ((this.selGenre === "Filtra per genere") && (this.selGenre === "Filtra per anno") ){
                 this.getResp();
             }
             else {
-                this.sendSelGenre(genre)
+                this.sendSelGenre(genre, year)
             }
         },
         // Richiesta Standard
@@ -30,20 +32,20 @@ var app = new Vue({
                 const response = await axios.get(this.localApi)
                 this.albumData = response.data;
             // Creo array filtri generi
-                this.pushFilterEl(response.data, this.foundAlbumGenres);
+                this.pushFilterEl(response.data, 'genre', this.foundAlbumGenres);
+                this.pushFilterEl(response.data, 'year', this.foundAlbumYears);
                 this.isLoading = false;
-
             } catch(error) {
                 console.log(error)
                 this.isLoading = 'error';
             }
         },
         // Invia Filtri
-        async sendSelGenre(genre) {
+        async sendSelGenre(genre, year) {
             this.isLoading = true;
             try {
                 genre = genre.toLowerCase();
-                let request = `${this.localApi}?genre=${genre}`;
+                let request = `${this.localApi}?genre=${genre}&year=${year}`;
                 const response = await axios.get(request)
                 this.albumData = response.data;
                 this.isLoading = false;
@@ -54,11 +56,20 @@ var app = new Vue({
             }
         },
         // Creazione array filtro genere
-        pushFilterEl(response, array) {
-            for (let i = 0; i < response.length; i++) {
-                let actualFilter = response[i].genre;
-                if (!array.includes(actualFilter)) {
-                    array.push(response[i].genre);
+        pushFilterEl(response, filter, array) {
+            if (filter === 'genre') {
+                for (let i = 0; i < response.length; i++) {
+                    let actualFilter = response[i].genre;
+                    if (!array.includes(actualFilter)) {
+                        array.push(response[i].genre);
+                    }
+                }
+            } else {
+                for (let i = 0; i < response.length; i++) {
+                    let actualFilter = response[i].year;
+                    if (!array.includes(actualFilter)) {
+                        array.push(response[i].year);
+                    }
                 }
             }
         }

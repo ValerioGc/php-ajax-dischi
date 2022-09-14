@@ -17,9 +17,12 @@
                 <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" alt="Logo Spotify">
                 <div>
                 <!-- Selettore filtro Anno-->
-
+                    <select name="yearSelector" id="selYear" @change="callApi(selGenre, selYear)" v-model="selYear">
+                        <option value="Filtra per anno">Filtra per anno</option>
+                        <option v-for="(year, index) in foundAlbumYears" :key="index" >{{year}}</option>
+                    </select>
                 <!-- Selettore filtro Genere-->
-                    <select name="genreSelector" id="selGenre" @change="callApi(selGenre)" v-model="selGenre">
+                    <select name="genreSelector" id="selGenre" @change="callApi(selGenre, selYear)" v-model="selGenre">
                         <option value="Filtra per genere">Filtra per genere</option>
                         <option v-for="(genre, index) in foundAlbumGenres" :key="index" >{{genre}}</option>
                     </select>

@@ -16,7 +16,7 @@
    }
    else {
      for ($i = 0; $i < count($database); $i++) {
-         if (strtolower($database[$i]['genre']) == $genre) {
+         if (strtolower($database[$i]['genre']) == strtolower($genre)) {
              $responseArray[] = $database[$i];
          }
      }
