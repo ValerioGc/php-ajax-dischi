@@ -52,7 +52,6 @@ var app = new Vue({
             } catch(error) {
                 console.log(error)
                 this.isLoading = 'error';
-
             }
         },
         // Creazione array filtro genere
