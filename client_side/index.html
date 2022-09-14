@@ -16,6 +16,9 @@
             <header>
                 <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" alt="Logo Spotify">
                 <div>
+                <!-- Selettore filtro Anno-->
+
+                <!-- Selettore filtro Genere-->
                     <select name="genreSelector" id="selGenre" @change="callApi(selGenre)" v-model="selGenre">
                         <option value="Filtra per genere">Filtra per genere</option>
                         <option v-for="(genre, index) in foundAlbumGenres" :key="index" >{{genre}}</option>
@@ -24,6 +27,7 @@
             </header>
             <main>
                 <ul class="card-container">
+                <!-- Messaggio errore / caricamento-->
                     <li class="alert" :class="(isLoading === 'error') ? 'error':'loading'" v-if="isLoading !== false">
                         <div>
                             <i class="fa-spin fa-2x fa-solid fa-spinner" v-if="isLoading === true"></i>
@@ -32,6 +36,7 @@
                             <h1 v-else>Errore nessuna risposta dal server</h1>
                         </div>
                     </li>
+                    <!-- Cards-->
                     <li class="card"  v-for="(album, index) in albumData" :key="index" :class="{'d-none':isLoading}">
                         <img :src="album.poster" :alt="`Copertina ${album.title}`">
                         <h1 class="album-title">{{album.title}}</h1>
