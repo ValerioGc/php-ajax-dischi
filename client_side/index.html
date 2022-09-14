@@ -15,7 +15,7 @@
             <main>
                 <ul class="card-container">
                     <li class="card"  v-for="(album, index) in albumData" :key="index">
-                        <img :src="album.title" :alt="`Copertina ${album.title}`">
+                        <img :src="album.poster" :alt="`Copertina ${album.title}`">
                         <h1 class="album-title">{{album.title}}</h1>
                         <span class="album-info">
                             <p>{{album.author}}</p>

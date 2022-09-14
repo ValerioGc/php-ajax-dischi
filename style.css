@@ -37,10 +37,12 @@ main {
     align-items: center;
 }
 .card {
-    width: calc(100% / 5 - 2rem);
+    width: calc(100% / 5 - 1rem);
     padding: 1rem;
     background-color: #2E3A46;
-    margin: 1.5rem 0;
+    margin-bottom: 1.5rem;
+    height: 45vh;
+    text-align: center;
 }
 
 .card img {
@@ -50,11 +52,16 @@ main {
 .card .album-title {
     color: #ffffff;
     text-transform: uppercase;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
+    padding: 1rem 0;
 }
 .card .album-info {
     color: #5E5B5E;
     text-transform: capitalize;
     font-size: 1rem;
+
+}
+.card .album-info p:last-child {
+padding-top: 0.5rem;
 
 }
