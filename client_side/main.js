@@ -2,10 +2,13 @@ var app = new Vue({
     el: '#app',
     data: {
         localApi: 'http://localhost/php-ajax-dischi/client_side/data_api.php',
+    // Array Album
         albumData: [],
+    // Stato Caricamento
         isLoading: false,
+    // Genere Selezionato
         selGenre: 'Filtra per genere',
-    // Array Filtri
+    // Array Filtro genere
         foundAlbumGenres: [],
     },
     created() { this.getResp(); },
@@ -26,7 +29,7 @@ var app = new Vue({
             try {
                 const response = await axios.get(this.localApi)
                 this.albumData = response.data;
-                // Creo array filtri generi ed anni
+            // Creo array filtri generi
                 this.pushFilterEl(response.data, this.foundAlbumGenres);
                 this.isLoading = false;
 
