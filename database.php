@@ -66,7 +66,7 @@ $database = [
     [
         'title' => 'Hard Wired',
         'author' => 'Dave Weckl',
-        'year' => 1994,
+        'year' => 19924,
         'poster' => 'https://i.discogs.com/qriYJQcRDBbzdEwKw9EIFZZDC-wjCcHBbNvazrNaxqo/rs:fit/g:sm/q:90/h:596/w:596/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTIxNzM0/NDYtMTI5NjkyNjUw/Mi5qcGVn.jpeg',
         'genre' => 'Jazz'
     ],
