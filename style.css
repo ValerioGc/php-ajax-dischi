@@ -70,7 +70,6 @@ main {
     height: 25vh;
     object-fit: contain;
     object-position: center;
-
 }
 
 .card .album-title {
@@ -89,22 +88,11 @@ main {
     padding-top: 0.5rem;
 }
 /****** Schermata Errore / Caricamento *******/
-
 .alert {
     height: 50vh;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.error i {
-    color: red;
-}
-.error h1 {
-    color: #5d1717;
-}
-.loading {
-    color: #09589b;
 }
 
 .error,
@@ -116,6 +104,16 @@ main {
     padding-left: 1rem;
     font-size: 30px;
 }
+.error i {
+    color: red;
+}
+.error h1 {
+    color: #5d1717;
+}
+.loading {
+    color: #09589b;
+}
+
 /***************** Media Query **************/
 @media screen and (max-width: 1300px) {
     .card {
