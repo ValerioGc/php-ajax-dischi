@@ -11,11 +11,9 @@
 
     // **** Filters *****
     if ($genre === 'Genere')  {
-        $genre = null;
+        $genre2 = null;
     } else {
         $genre = strtolower($genre);
-        $genre2 = null;
-
     }
     if ($year === 'Anno')  {
         $year2 = null;
@@ -24,14 +22,14 @@
    if (($genre2 == null) && ($year2 == null)){
        $responseArray = $database;
    }
-   elseif (($genre2 == null) && (!$year2 == null)){
+   elseif ((!$genre2 == null) && ($year2 == null)){
      for ($i = 0; $i < count($database); $i++) {
          if (strtolower($database[$i]['genre']) == strtolower($genre)) {
                 $responseArray[] = $database[$i];
          }
      }
    }
-   elseif ((!$genre2 == null) && ($year2 == null)) {
+   elseif (($genre2 == null) && (!$year2 == null)) {
      for ($i = 0; $i < count($database); $i++) {
          if (($database[$i]['year']) == $year) {
                 $responseArray[] = $database[$i];
@@ -40,7 +38,7 @@
    }
    elseif ((!$genre2 == null) && (!$year2 == null)) {
      for ($i = 0; $i < count($database); $i++) {
-         if ((strtolower($database[$i]['genre']) == strtolower($genre)) && (($database[$i]['year']) == $year) ) {
+         if ((strtolower($database[$i]['genre']) === strtolower($genre)) && (($database[$i]['year']) === $year) ) {
                 $responseArray[] = $database[$i];
          }
      }
