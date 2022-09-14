@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>php ajax dischi</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../style.css">
+    </head>
+    <body>
+        <div id="app">
+            <header>
+                <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" alt="Logo Spotify">
+                <div>
+                <!-- Selettore filtro Anno-->
+                    <select name="yearSelector" id="selYear" @change="callApi(selGenre, selYear)" v-model="selYear">
+                        <option value="Anno">Filtra per anno</option>
+                        <option v-for="(year, index) in foundAlbumYears" :key="index" >{{year}}</option>
+                    </select>
+                <!-- Selettore filtro Genere-->
+                    <select name="genreSelector" id="selGenre" @change="callApi(selGenre, selYear)" v-model="selGenre">
+                        <option value="Genere">Filtra per genere</option>
+                        <option v-for="(genre, index) in foundAlbumGenres" :key="index" >{{genre}}</option>
+                    </select>
+                </div>
+            </header>
+            <main>
+                <ul class="card-container">
+                <!-- Messaggio errore / caricamento-->
+                    <li class="alert" :class="(isLoading === 'error') ? 'error':'loading'" v-if="isLoading !== false">
+                        <div>
+                            <i class="fa-spin fa-2x fa-solid fa-spinner" v-if="isLoading === true"></i>
+                            <i class="fa-beat fa-2x fa-solid fa-bomb" v-else ></i>
+                            <h1 v-if="isLoading === true">Caricamento in corso</h1>
+                            <h1 v-else>Errore nessuna risposta dal server</h1>
+                        </div>
+                    </li>
+                    <!-- Cards-->
+                    <li class="card"  v-for="(album, index) in albumData" :key="index" :class="{'d-none':isLoading}">
+                        <img :src="album.poster" :alt="`Copertina ${album.title}`">
+                        <h1 class="album-title">{{album.title}}</h1>
+                        <span class="album-info">
+                            <p>{{album.author}}</p>
+                            <p>{{album.year}}</p>
+                        </span>
+                    </li>
+                </ul>
+            </main>
+        </div>
+    <!-- Script -->
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+        <script src="./main.js"></script>
+    </body>
+</html>
