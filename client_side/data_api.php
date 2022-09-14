@@ -4,5 +4,22 @@
 
     require_once __DIR__ . "/../database.php";
 
-    echo json_encode ($database);
 
+    $responseArray = [];
+    $genre = $_GET['genre'];
+
+
+    // **** Filters *****
+
+   if ($genre == null) {
+       $responseArray = $database;
+   }
+   else {
+     for ($i = 0; $i < count($database); $i++) {
+         if (strtolower($database[$i]['genre']) == $genre) {
+             $responseArray[] = $database[$i];
+         }
+     }
+   }
+
+    echo json_encode($responseArray);
