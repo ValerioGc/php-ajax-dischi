@@ -7,8 +7,8 @@ var app = new Vue({
     // Stato Caricamento
         isLoading: false,
     // Genere e anno Selezionato
-        selYear: 'Filtra per anno',
-        selGenre: 'Filtra per genere',
+        selYear: 'Anno',
+        selGenre: 'Genere',
     // Array Filtro genere
         foundAlbumGenres: [],
         foundAlbumYears: [],
@@ -18,7 +18,7 @@ var app = new Vue({
     methods: {
         // Seleziona Chiamata
         callApi(genre, year){
-            if ((this.selGenre === "Filtra per genere") && (this.selGenre === "Filtra per anno") ){
+            if ((genre == "Genere") && (year == "Anno") ){
                 this.getResp();
             }
             else {
@@ -44,15 +44,14 @@ var app = new Vue({
         async sendSelGenre(genre, year) {
             this.isLoading = true;
             try {
-                genre = genre.toLowerCase();
                 let request = `${this.localApi}?genre=${genre}&year=${year}`;
+                console.log(request)
                 const response = await axios.get(request)
                 this.albumData = response.data;
                 this.isLoading = false;
             } catch(error) {
                 console.log(error)
                 this.isLoading = 'error';
-
             }
         },
         // Creazione array filtro genere
